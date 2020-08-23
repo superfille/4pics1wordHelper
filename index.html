@@ -1,0 +1,54 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <script src="words_dictionary.js"></script>
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <form>
+        <div class="form-group">
+          <label for="chars">Karaktärerna</label>
+          <input type="text" class="form-control" id="chars">
+        </div>
+        <div class="form-group">
+          <label for="numChars">Antal karaktärer</label>
+          <div class="mb-2">
+            <button data-btn="numCharsBtn" data-btnid="1" type="button" class="btn btn-primary">1</button>
+            <button data-btn="numCharsBtn" data-btnid="2" type="button" class="btn btn-secondary">2</button>
+            <button data-btn="numCharsBtn" data-btnid="3" type="button" class="btn btn-success">3</button>
+            <button data-btn="numCharsBtn" data-btnid="4" type="button" class="btn btn-danger">4</button>
+            <button data-btn="numCharsBtn" data-btnid="5" type="button" class="btn btn-warning">5</button>
+            <button data-btn="numCharsBtn" data-btnid="6" type="button" class="btn btn-info">6</button>
+            <button data-btn="numCharsBtn" data-btnid="7" type="button" class="btn btn-light">7</button>
+            <button data-btn="numCharsBtn" data-btnid="8" type="button" class="btn btn-dark">8</button>
+          </div>
+          
+          <input type="number" class="form-control" id="numChars">
+        </div>
+        <button id="submit" type="button" class="btn btn-primary">Submit</button>
+        <button id="clear" type="button" class="btn btn-secondary">Clear</button>
+      </form>
+
+      <table class="table table-striped">
+        <tbody id="tbody">
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      document.getElementById('submit').addEventListener('click', onSubmit)
+      document.getElementById('clear').addEventListener('click', clear)
+
+      document.querySelectorAll('[data-btn="numCharsBtn"]').forEach((element) => {
+        element.addEventListener('click', () => {
+          numCharsSelected = element.dataset.btnid
+          setActiveButton(element.dataset.btnid)
+          document.getElementById('numChars').value = element.dataset.btnid
+        })
+      })
+    </script>
+  </body>
+</html>
